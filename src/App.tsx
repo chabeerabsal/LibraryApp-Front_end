@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Navbar } from './Layout/Navbarheaderfooter/navbar';
+import { Footer } from './Layout/Navbarheaderfooter/Footer';
+import { Homepage } from './Layout/HomePage/Homepage';
+import { SearchBooksPage } from './Layout/SearchBooksPage/SearchBooksPage';
+import { Switch, Route, Redirect } from 'react-router';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Navbar/>
+    <Switch>
+          <Route path='/' exact>
+            <Redirect to='/home' />
+          </Route>
+          <Route path='/home'>
+            <Homepage />
+          </Route>
+          <Route path='/search'>
+            <SearchBooksPage />
+          </Route>
+      </Switch>
+    <Footer/>
     </div>
   );
 }
